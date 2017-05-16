@@ -3,8 +3,6 @@
 // A simple isometric generator tile renderer
 export default {
 
-
-
   addLayer: function(canvas, map, touchable = false) {
     var tileImages = [];
     var loadedImages = 0;
@@ -34,26 +32,9 @@ function drawLayer(map, canvas, context, tileImages, touchable) {
     var Ytiles = map.map[0].length;
     var selectedTileX = -1;
     var selectedTileY = -1;
-    var showCoordinates = false;
-
+    var showCoordinates = true;
+    var tiles = [];
     
-    function run() {
-      window.addEventListener('resize', function(){
-        redrawTiles();
-      });
-      window.addEventListener('mousemove', function(e) {
-        var pageX = e.pageX - map.tileColumnOffset / 2 - map.originX;
-        var pageY = e.pageY - map.tileRowOffset / 2 - map.originY;
-        var tileX = Math.round(pageX / map.tileColumnOffset - pageY / map.tileRowOffset);
-        var tileY = Math.round(pageX / map.tileColumnOffset + pageY / map.tileRowOffset);
-
-        selectedTileX = tileX;
-        selectedTileY = tileY;
-        redrawTiles();
-      });
-      updateCanvasSize();
-      redrawTiles();
-    }
 
 
     function updateCanvasSize() {
@@ -71,18 +52,18 @@ function drawLayer(map, canvas, context, tileImages, touchable) {
     function redrawTiles() {
       for(var Xi = (Xtiles - 1); Xi >= 0; Xi--) {
         for(var Yi = 0; Yi < Ytiles; Yi++) {
-          drawTile(Xi, Yi);
+          drawTile(Xi, Yi, selectedTileX == Xi && selectedTileY == Yi);
         }
       }
       if (touchable && isCursorOnMap()) {
         drawDiamond(selectedTileX, selectedTileY, 'yellow');
       }
-      if(touchable && showCoordinates && isCursorOnMap()) {
+      /*if(touchable && showCoordinates && isCursorOnMap()) {
         context.fillStyle = 'black';
         var idx = map.map[selectedTileX][selectedTileY];
         context.font = '13pt Arial';
         context.fillText(map.tiles[idx].replace("/assets/tiles/",""), 500, 500);
-      }
+      }*/
     }
 
     function isCursorOnMap() {
@@ -90,7 +71,7 @@ function drawLayer(map, canvas, context, tileImages, touchable) {
               selectedTileY >= 0 && selectedTileY < Ytiles);
     }
 
-    function drawTile(Xi, Yi) {
+    function drawTile(Xi, Yi, showCoordinates) {
       var offX = Xi * map.tileColumnOffset / 2 + Yi * map.tileColumnOffset / 2 + map.originX;
       var offY = Yi * map.tileRowOffset / 2 - Xi * map.tileRowOffset / 2 + map.originY;
 
@@ -98,7 +79,7 @@ function drawLayer(map, canvas, context, tileImages, touchable) {
       if (tileImages[imageIndex]) {
         context.drawImage(tileImages[imageIndex], offX, offY);
       }
-      if(showCoordinates) {
+      if (showCoordinates) {
         context.fillStyle = 'orange';
         context.fillText(Xi + ", " + Yi, offX +map.tileColumnOffset/2 - 9, offY + map.tileRowOffset/2 + 3);
       }
@@ -124,6 +105,26 @@ function drawLayer(map, canvas, context, tileImages, touchable) {
       context.stroke();
     }
 
+    function run() {
+      console.log('asdas');
+      window.addEventListener('resize', function(){
+      updateCanvasSize();
+        redrawTiles();
+      });
+      window.addEventListener('mousemove', function(e) {
+        var pageX = e.pageX - map.tileColumnOffset / 2 - map.originX;
+        var pageY = e.pageY - map.tileRowOffset / 2 - map.originY;
+        var tileX = Math.round(pageX / map.tileColumnOffset - pageY / map.tileRowOffset);
+        var tileY = Math.round(pageX / map.tileColumnOffset + pageY / map.tileRowOffset);
+
+        selectedTileX = tileX;
+        selectedTileY = tileY;
+        redrawTiles();
+      });
+      updateCanvasSize();
+      redrawTiles();
+    }
+    
     return {
       Xtiles,
       Ytiles,

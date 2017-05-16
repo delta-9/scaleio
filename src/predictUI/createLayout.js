@@ -1,35 +1,44 @@
 import Isometric from './Isometric.js'
 
 export default function createLayout(canvas) {
-  // Initiate the layout and store a reference to the engine used.
-  loadLayers();
-  function update(layers) {
-      layers.grid.run();
-      layers.surface.run();
-      layers.block.run()
+  var layers = {};
+  var settings = {};
+
+  function update() {
+    layers.grid.run();
+    //layers.surface.run();
+  }
+  
+  function layersLoaded(data) {
+    console.log(data);
+    layers = Object.assign({}, data);
+    update();
   }
 
-  function settings(settings) {
+  function setSettings(settings) {
   }
 
-  function loadLayers(cb) {
+  function layersLoad(canvas, cb) {
+
     Promise.all([
-      Isometric.addLayer(canvas, IsometricMap),
-      Isometric.addLayer(canvas, IsometricMap2, true),
-      Isometric.addLayer(canvas, IsometricMap3),
+      Isometric.addLayer(canvas, IsometricMap, true),
+      //Isometric.addLayer(canvas, IsometricMap2, true),
     ])
-    .then(([grid, surface, block]) => {
-      update({
+    .then(([grid, surface]) => {
+      cb({
         grid,
-        surface,
-        block,
+        //surface,
       })
     });
   }
 
+  layersLoad(canvas, layersLoaded);
+
   return {
+    ...layers,
     update,
-    settings
+    settings,
+    setSettings
   };
   
 }
@@ -37,8 +46,7 @@ export default function createLayout(canvas) {
 // Map between index and filename
 var IsometricMap = {
   tiles: [
-    // "images/dirt.png",
-    "tile.png", 		// 0
+    "tile.png",
   ],
   map: [
          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  0, 0, 0, 0],
@@ -72,8 +80,6 @@ var IsometricMap = {
 // Map between index and filename
 var IsometricMap2 = {
   tiles: [
-    // "images/dirt.png",
-    "tile.png", 		// 0
   ],
   map: [  
          [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1],
@@ -104,38 +110,3 @@ var IsometricMap2 = {
   originY: 0,
 };
 
-
-// Map between index and filename
-var IsometricMap3 = {
-  tiles: [
-    // "images/dirt.png",
-    "block.png", 		// 0
-  ],
-  map: [
-         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1],
-         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1],
-         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1],
-         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1],
-         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1],
-         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1],
-         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1],
-         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1],
-         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1],
-         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1],
-         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1],
-         [1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1,  1, 1, 1, 1],
-         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1],
-         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1],
-         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1],
-         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1],
-         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1],
-         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1],
-         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1],
-         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1],
-         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  1, 1, 1, 1],
-    ],
-  tileColumnOffset: 100, // pixels
-  tileRowOffset: 50, // pixels
-  originX: 0,
-  originY: 0,
-};

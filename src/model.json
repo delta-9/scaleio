@@ -145,7 +145,7 @@
       // List of fields / validation / and requirements for the status
     },
     "insights": [
-      "What vpc network connections"
+      "What's a vpc network provide"
     ]
   },
   "autoscaling_group_ec2": {
@@ -163,7 +163,7 @@
       }
     },
     "insights": [
-      "Bla bla autoscaling group ec2 instances orchestration"
+      "What's an autoscaling group ec2 instances orchestration"
     ]
   }
 },
