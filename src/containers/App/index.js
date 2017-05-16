@@ -15,7 +15,7 @@ class App extends Component {
   }
 
   predictInit(model) {
-    this.predict = createLayout(document.getElementById('predict'), model);
+    this.predict = createLayout('predict', model);
   }
   
   render() {
