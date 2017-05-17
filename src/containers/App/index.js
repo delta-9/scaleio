@@ -11,10 +11,11 @@ class App extends Component {
   componentWillMount() {
     /*request('model.json')
       .then((json) => { this.predictInit(json)});*/
-      this.predictInit({});
+     setTimeout(() => this.predictInit(), 30000 );
   }
 
   predictInit(model) {
+    console.log(window);
     this.predict = createLayout('predict', model);
   }
   
