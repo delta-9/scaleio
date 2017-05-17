@@ -11,7 +11,7 @@ class App extends Component {
   componentWillMount() {
     /*request('model.json')
       .then((json) => { this.predictInit(json)});*/
-     setTimeout(() => this.predictInit(), 30000 );
+    this.predictInit();
   }
 
   predictInit(model) {
