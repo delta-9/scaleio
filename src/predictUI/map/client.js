@@ -62,8 +62,8 @@ IgeViewport, IgeTileMap2d, IgeUiEntity, IgeEntity, IgeMousePanComponent } = wind
 					// created above
 					self.vp1 = new IgeViewport()
 						.id('vp1')
-						.addComponent(IgeMousePanComponent)
-						.mousePan.enabled(true)
+						//.addComponent(IgeMousePanComponent)
+						//.mousePan.enabled(true)
 						.autoSize(true)
 						.scene(self.mainScene)
 						.drawBounds(true)
@@ -71,7 +71,6 @@ IgeViewport, IgeTileMap2d, IgeUiEntity, IgeEntity, IgeMousePanComponent } = wind
 						.mount(ige);
 
 			
-
 					self.tileMap2 = new IgeTileMap2d()
 						.id('tileMap2')
 						.depth(1)
@@ -80,7 +79,7 @@ IgeViewport, IgeTileMap2d, IgeUiEntity, IgeEntity, IgeMousePanComponent } = wind
 						.tileHeight(40)
 						.gridSize(10, 10)
 						.drawGrid(true)
-						.translateTo(0, -300, 0)
+						.translateTo(-200, -300, 0)
 						.drawMouse(true)
 						//.drawBounds(false)
 						.highlightOccupied(false)
@@ -89,7 +88,23 @@ IgeViewport, IgeTileMap2d, IgeUiEntity, IgeEntity, IgeMousePanComponent } = wind
 						})
 						.mount(self.mainScene);
 
-					var overFunc,
+				    self.tileMap3 = new IgeTileMap2d()
+						.id('tileMap3')
+						.depth(1)
+						.tileWidth(40)
+						.tileHeight(40)
+						.gridSize(10, 10)
+						.drawGrid(true)
+						.translateTo(400, -300, 0)
+						.drawMouse(true)
+						//.drawBounds(false)
+						.highlightOccupied(true)
+						.mouseUp(function (event, evc, data) {
+							console.log(this.id(), this.mouseToTile(), arguments);
+						})
+						.mount(self.mainScene);
+
+				/**	var overFunc,
 						outFunc,
 						upFunc;
 
@@ -119,7 +134,7 @@ IgeViewport, IgeTileMap2d, IgeUiEntity, IgeEntity, IgeMousePanComponent } = wind
 						this.translateToTile(5, 5);
 					};
 
-
+/** 
 					// Create two isometric 3d entities
 					self.obj[0] = new IgeEntity()
 						.id('3d1')
@@ -131,8 +146,7 @@ IgeViewport, IgeTileMap2d, IgeUiEntity, IgeEntity, IgeMousePanComponent } = wind
 						.mount(self.tileMap2)
 						.translateToTile(0, 0)
 						.drawBounds(false)
-						/*.tileWidth(1)
-						.tileHeight(1)*/
+	
 						.occupyTile()
 						
 						.mouseOver(overFunc)
@@ -150,8 +164,7 @@ IgeViewport, IgeTileMap2d, IgeUiEntity, IgeEntity, IgeMousePanComponent } = wind
 						.mount(self.tileMap2)
 						.translateToTile(2, 4)
 						.drawBounds(false)
-						/*.tileWidth(2)
-						.tileHeight(2)*/
+
 						.occupyTile()
 						
 						.mouseOver(overFunc)
@@ -192,7 +205,7 @@ IgeViewport, IgeTileMap2d, IgeUiEntity, IgeEntity, IgeMousePanComponent } = wind
 
 			
 
-					self.vp2 = new IgeViewport()
+				/**	self.vp2 = new IgeViewport()
 						.id('vp2')
 						.addComponent(IgeMousePanComponent)
 						.mousePan.enabled(true)
@@ -212,7 +225,7 @@ IgeViewport, IgeTileMap2d, IgeUiEntity, IgeEntity, IgeMousePanComponent } = wind
 					self.vp1.camera.translateTo(0, 0, 0);
 					self.vp2.camera.scaleTo(2, 2, 2);
 					
-					self.cont = new IgeUiEntity()
+				/**	self.cont = new IgeUiEntity()
 						.id('cont')
 						.middle(0)
 						.center(0)
@@ -309,7 +322,7 @@ IgeViewport, IgeTileMap2d, IgeUiEntity, IgeEntity, IgeMousePanComponent } = wind
 					ige.watchStart(self.customWatch.w2);
 					ige.watchStart(self.customWatch.w3);
 
-					ige.watchStart(self.customWatch.w1);
+					ige.watchStart(self.customWatch.w1);**/
 				}
 			});
 		});

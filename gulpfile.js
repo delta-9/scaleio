@@ -5,7 +5,7 @@ var gulp = require('gulp'),
     gp_sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('js-engine', function(){
-    return gulp.src(files.map(function(f) { return 'engine/' + f[2]; }))
+    return gulp.src(files.filter(function(f) { return f[0].indexOf('c') > -1; }).map(function(f) { return 'engine/' + f[2]; }))
         .pipe(gp_sourcemaps.init())
         .pipe(gp_concat('engine.js'))
         .pipe(gulp.dest('public'))
