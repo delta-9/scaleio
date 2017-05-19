@@ -1,5 +1,5 @@
 
 
-export function draw() {
-
+export function draw(ige) {
+    var store
 }
