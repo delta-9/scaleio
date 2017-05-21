@@ -401,10 +401,10 @@ var IgeTexture = IgeEventingClass.extend({
 			// TODO: track of the value and evaluate first before changing?
 			if (!this._smoothing) {
 				ctx.imageSmoothingEnabled = false;
-				ctx.mozImageSmoothingEnabled = false;
+				ctx.imageSmoothingEnabled = false;
 			} else {
 				ctx.imageSmoothingEnabled = true;
-				ctx.mozImageSmoothingEnabled = true;
+				ctx.imageSmoothingEnabled = true;
 			}
 
 			canvas.width = cell[2];
@@ -478,10 +478,10 @@ var IgeTexture = IgeEventingClass.extend({
 				// Set smoothing mode
 				if (!this._smoothing) {
 					this._textureCtx.imageSmoothingEnabled = false;
-					this._textureCtx.mozImageSmoothingEnabled = false;
+					this._textureCtx.imageSmoothingEnabled = false;
 				} else {
 					this._textureCtx.imageSmoothingEnabled = true;
-					this._textureCtx.mozImageSmoothingEnabled = true;
+					this._textureCtx.imageSmoothingEnabled = true;
 				}
 
 				if (!dontDraw) {
@@ -538,10 +538,10 @@ var IgeTexture = IgeEventingClass.extend({
 				// Set smoothing mode
 				if (!this._smoothing) {
 					this._textureCtx.imageSmoothingEnabled = false;
-					this._textureCtx.mozImageSmoothingEnabled = false;
+					this._textureCtx.imageSmoothingEnabled = false;
 				} else {
 					this._textureCtx.imageSmoothingEnabled = true;
-					this._textureCtx.mozImageSmoothingEnabled = true;
+					this._textureCtx.imageSmoothingEnabled = true;
 				}
 
 				if (!dontDraw) {
@@ -606,10 +606,10 @@ var IgeTexture = IgeEventingClass.extend({
 			// TODO: track of the value and evaluate first before changing?
 			if (!this._smoothing) {
 				ige._ctx.imageSmoothingEnabled = false;
-				ige._ctx.mozImageSmoothingEnabled = false;
+				ige._ctx.imageSmoothingEnabled = false;
 			} else {
 				ige._ctx.imageSmoothingEnabled = true;
-				ige._ctx.mozImageSmoothingEnabled = true;
+				ige._ctx.imageSmoothingEnabled = true;
 			}
 
 			if (this._mode === 0) {
@@ -742,10 +742,10 @@ var IgeTexture = IgeEventingClass.extend({
 					// Set smoothing mode
 					if (!this._smoothing) {
 						this._textureCtx.imageSmoothingEnabled = false;
-						this._textureCtx.mozImageSmoothingEnabled = false;
+						this._textureCtx.imageSmoothingEnabled = false;
 					} else {
 						this._textureCtx.imageSmoothingEnabled = true;
-						this._textureCtx.mozImageSmoothingEnabled = true;
+						this._textureCtx.imageSmoothingEnabled = true;
 					}
 				}
 
@@ -792,10 +792,10 @@ var IgeTexture = IgeEventingClass.extend({
 						// Set smoothing mode
 						if (!this._smoothing) {
 							this._textureCtx.imageSmoothingEnabled = false;
-							this._textureCtx.mozImageSmoothingEnabled = false;
+							this._textureCtx.imageSmoothingEnabled = false;
 						} else {
 							this._textureCtx.imageSmoothingEnabled = true;
-							this._textureCtx.mozImageSmoothingEnabled = true;
+							this._textureCtx.imageSmoothingEnabled = true;
 						}
 					}
 	
@@ -847,10 +847,10 @@ var IgeTexture = IgeEventingClass.extend({
 					// Set smoothing mode
 					if (!this._smoothing) {
 						this._textureCtx.imageSmoothingEnabled = false;
-						this._textureCtx.mozImageSmoothingEnabled = false;
+						this._textureCtx.imageSmoothingEnabled = false;
 					} else {
 						this._textureCtx.imageSmoothingEnabled = true;
-						this._textureCtx.mozImageSmoothingEnabled = true;
+						this._textureCtx.imageSmoothingEnabled = true;
 					}
 					
 					// Draw the image to the canvas

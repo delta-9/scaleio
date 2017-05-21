@@ -2163,5 +2163,4 @@ var IgeEngine = IgeEntity.extend({
 		this.log('Engine destroy complete.');
 	}
 });
-window.IgeEngine = IgeEngine;
 if (typeof(module) !== 'undefined' && typeof(module.exports) !== 'undefined') { module.exports = IgeEngine; }

@@ -1,4 +1,4 @@
-{
+export const model = {
 /**
  * Service definitions
  *
@@ -175,7 +175,7 @@
 "element": 
 {
   "ec2": {
-    "dimensions": { "x":1, "y":1, "height": 2 },
+    "dimensions": { "tileWidth":2, "tileHeight": 2 },
     // Placement constraints groups
     "constraints": [
     {
@@ -193,12 +193,12 @@
   },
   // VPC
   "vpc": {
-    "dimensions": { "x":40, "y":40, "height": 1 },
+    "dimensions": { "tileWidth":40, "tileHeight": 40 },
     "constraints": []
   }, 
   // Autoscaling group
   "autoscaling_group": {
-    "dimensions": { "x":8, "y":4, "height": 1 },
+    "dimensions": { "tileWidth":8, "tileHeight": 4 },
     "constraints": [
     {
       "must": [{
@@ -217,7 +217,7 @@
   },
   // Load balancer
   "lb": {
-    "dimensions": { "x":3, "y":2, "height": 1 },
+    "dimensions": { "tileWidth":8, "tileHeight": 4 },
     "constraints": [
     {
       "must_not": [{
@@ -251,4 +251,4 @@
 
 
 
-}
+};

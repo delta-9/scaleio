@@ -28687,10 +28687,10 @@ var IgeTexture = IgeEventingClass.extend({
 			// TODO: track of the value and evaluate first before changing?
 			if (!this._smoothing) {
 				ctx.imageSmoothingEnabled = false;
-				ctx.mozImageSmoothingEnabled = false;
+				ctx.imageSmoothingEnabled = false;
 			} else {
 				ctx.imageSmoothingEnabled = true;
-				ctx.mozImageSmoothingEnabled = true;
+				ctx.imageSmoothingEnabled = true;
 			}
 
 			canvas.width = cell[2];
@@ -28764,10 +28764,10 @@ var IgeTexture = IgeEventingClass.extend({
 				// Set smoothing mode
 				if (!this._smoothing) {
 					this._textureCtx.imageSmoothingEnabled = false;
-					this._textureCtx.mozImageSmoothingEnabled = false;
+					this._textureCtx.imageSmoothingEnabled = false;
 				} else {
 					this._textureCtx.imageSmoothingEnabled = true;
-					this._textureCtx.mozImageSmoothingEnabled = true;
+					this._textureCtx.imageSmoothingEnabled = true;
 				}
 
 				if (!dontDraw) {
@@ -28824,10 +28824,10 @@ var IgeTexture = IgeEventingClass.extend({
 				// Set smoothing mode
 				if (!this._smoothing) {
 					this._textureCtx.imageSmoothingEnabled = false;
-					this._textureCtx.mozImageSmoothingEnabled = false;
+					this._textureCtx.imageSmoothingEnabled = false;
 				} else {
 					this._textureCtx.imageSmoothingEnabled = true;
-					this._textureCtx.mozImageSmoothingEnabled = true;
+					this._textureCtx.imageSmoothingEnabled = true;
 				}
 
 				if (!dontDraw) {
@@ -28892,10 +28892,10 @@ var IgeTexture = IgeEventingClass.extend({
 			// TODO: track of the value and evaluate first before changing?
 			if (!this._smoothing) {
 				ige._ctx.imageSmoothingEnabled = false;
-				ige._ctx.mozImageSmoothingEnabled = false;
+				ige._ctx.imageSmoothingEnabled = false;
 			} else {
 				ige._ctx.imageSmoothingEnabled = true;
-				ige._ctx.mozImageSmoothingEnabled = true;
+				ige._ctx.imageSmoothingEnabled = true;
 			}
 
 			if (this._mode === 0) {
@@ -29028,10 +29028,10 @@ var IgeTexture = IgeEventingClass.extend({
 					// Set smoothing mode
 					if (!this._smoothing) {
 						this._textureCtx.imageSmoothingEnabled = false;
-						this._textureCtx.mozImageSmoothingEnabled = false;
+						this._textureCtx.imageSmoothingEnabled = false;
 					} else {
 						this._textureCtx.imageSmoothingEnabled = true;
-						this._textureCtx.mozImageSmoothingEnabled = true;
+						this._textureCtx.imageSmoothingEnabled = true;
 					}
 				}
 
@@ -29078,10 +29078,10 @@ var IgeTexture = IgeEventingClass.extend({
 						// Set smoothing mode
 						if (!this._smoothing) {
 							this._textureCtx.imageSmoothingEnabled = false;
-							this._textureCtx.mozImageSmoothingEnabled = false;
+							this._textureCtx.imageSmoothingEnabled = false;
 						} else {
 							this._textureCtx.imageSmoothingEnabled = true;
-							this._textureCtx.mozImageSmoothingEnabled = true;
+							this._textureCtx.imageSmoothingEnabled = true;
 						}
 					}
 	
@@ -29133,10 +29133,10 @@ var IgeTexture = IgeEventingClass.extend({
 					// Set smoothing mode
 					if (!this._smoothing) {
 						this._textureCtx.imageSmoothingEnabled = false;
-						this._textureCtx.mozImageSmoothingEnabled = false;
+						this._textureCtx.imageSmoothingEnabled = false;
 					} else {
 						this._textureCtx.imageSmoothingEnabled = true;
-						this._textureCtx.mozImageSmoothingEnabled = true;
+						this._textureCtx.imageSmoothingEnabled = true;
 					}
 					
 					// Draw the image to the canvas
@@ -32248,10 +32248,8 @@ var IgeEntity = IgeObject.extend({
 				var smoothing = this._cacheSmoothing !== undefined ? this._cacheSmoothing : ige._globalSmoothing;
 				if (!smoothing) {
 					this._cacheCtx.imageSmoothingEnabled = false;
-					this._cacheCtx.mozImageSmoothingEnabled = false;
 				} else {
 					this._cacheCtx.imageSmoothingEnabled = true;
-					this._cacheCtx.mozImageSmoothingEnabled = true;
 				}
 
 				// Switch off composite caching
@@ -32318,10 +32316,10 @@ var IgeEntity = IgeObject.extend({
 					var smoothing = this._cacheSmoothing !== undefined ? this._cacheSmoothing : ige._globalSmoothing;
 					if (!smoothing) {
 						this._cacheCtx.imageSmoothingEnabled = false;
-						this._cacheCtx.mozImageSmoothingEnabled = false;
+						this._cacheCtx.imageSmoothingEnabled = false;
 					} else {
 						this._cacheCtx.imageSmoothingEnabled = true;
-						this._cacheCtx.mozImageSmoothingEnabled = true;
+						this._cacheCtx.imageSmoothingEnabled = true;
 					}
 				}
 				
@@ -39405,10 +39403,8 @@ var IgeTextureMap = IgeTileMap2d.extend({
 			// Ensure the canvas is using the correct image antialiasing mode
 			if (!ige._globalSmoothing) {
 				sectionCtx.imageSmoothingEnabled = false;
-				sectionCtx.mozImageSmoothingEnabled = false;
 			} else {
 				sectionCtx.imageSmoothingEnabled = true;
-				sectionCtx.mozImageSmoothingEnabled = true;
 			}
 
 			// One-time translate the context
@@ -48770,5 +48766,4 @@ var IgeEngine = IgeEntity.extend({
 		this.log('Engine destroy complete.');
 	}
 });
-window.IgeEngine = IgeEngine;
 if (typeof(module) !== 'undefined' && typeof(module.exports) !== 'undefined') { module.exports = IgeEngine; }
