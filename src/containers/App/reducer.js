@@ -23,6 +23,7 @@ export default function reducer(state = initialState, action) {
     case ADD_ELEMENT:  
       newState.elements[action.elementId] = {
         type: action.elementType,
+        options: action.options,
       };
       return newState;
     case ADD_CONNECTION:

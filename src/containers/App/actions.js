@@ -11,11 +11,12 @@ export function changeSettings(settings) {
   }, settings);
 };
 
-export function addElement(elementType, elementId) {
+export function addElement(elementType, elementId, /*temp*/ options) {
   return {
     type: ADD_ELEMENT,
     elementType,
     elementId,
+    options
   }
 }
 

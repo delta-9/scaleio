@@ -13,11 +13,11 @@ import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui
 const test = [
   {
     label: 'Add a vpc',
-    action: addElement('vpc', 'vpc_0'),
+    action: addElement('vpc', 'vpc_0', {tileX: 20, tileY:20, depth:0}),
   },
   {
     label: 'Add an autoscaling group',
-    action: addElement('autoscaling_group', 'autoscaling_group_0'),
+    action: addElement('autoscaling_group', 'autoscaling_group_0', {tileX: 20, tileY:20, depth:11}),
   },
   {
     label: 'Set autoscaling group properties',
@@ -28,7 +28,7 @@ const test = [
   },
   {
     label: 'Add a load balancer',
-    action: addElement('lb', 'lb_0'),
+    action: addElement('lb', 'lb_0', {tileX: 20, tileY:20, depth:31}),
   },
   {
     label: 'Set the load balancer properties',

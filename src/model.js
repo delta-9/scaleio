@@ -193,12 +193,12 @@ export const model = {
   },
   // VPC
   "vpc": {
-    "dimensions": { "tileWidth":40, "tileHeight": 40 },
+    "dimensions": { "tileWidth":40, "tileHeight": 40, "height": 10 },
     "constraints": []
   }, 
   // Autoscaling group
   "autoscaling_group": {
-    "dimensions": { "tileWidth":8, "tileHeight": 4 },
+    "dimensions": { "tileWidth":8, "tileHeight": 4, "height": 10 },
     "constraints": [
     {
       "must": [{
@@ -217,7 +217,7 @@ export const model = {
   },
   // Load balancer
   "lb": {
-    "dimensions": { "tileWidth":8, "tileHeight": 4 },
+    "dimensions": { "tileWidth":4, "tileHeight": 4, "height": 30 },
     "constraints": [
     {
       "must_not": [{

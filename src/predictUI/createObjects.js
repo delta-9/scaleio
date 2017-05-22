@@ -1,20 +1,18 @@
 
 import { model } from '../model';
-
-const { IgeVelocityComponent, IgeEntity, IgeClass } = window;
+import { PlacementMouseComponent } from './components/PlacementMouseComponent';
+const { IgeVelocityComponent, IgeEntity, IgeClass, IgeMousePanComponent } = window;
 
 var Cuboid = IgeEntity.extend({
 	classId: 'Cuboid',
 	
-	init: function (mouseMoveFunc, mouseOutFunc) {
+	init: function () {
 		IgeEntity.prototype.init.call(this);
 		
 		this.isometric(true)
-			.mouseMove(mouseMoveFunc)
-			.mouseOut(mouseOutFunc)
 			.mouseEventsActive(true)
 			.triggerPolygon('bounds3dPolygon')
-			.opacity(1)
+			.opacity(.95)
 	}
 });
 
@@ -23,37 +21,24 @@ const objects = {
   connections: {},
 };
 export function createObjects({ elements, connections }, textures, { objectLayer }) {
-    var overArr = [];
-    var x;
-    var mouseOverFunc = function () {
-      overArr.pushUnique(this);
-    };
-    
-    var mouseOutFunc = function () {
-      overArr.pull(this);
-        
-      // Turn off highlight since we've moved off the entity
-      this.highlight(false);
-    };
-    var tileX = 5;
-    var tileY = 5;
     console.log(elements);
     console.log(model);
     Object.keys(elements).forEach((elementId) => {
-      if (!objects.elements[elementId]) {
-        objects.elements[elementId] = new Cuboid(mouseOverFunc, mouseOutFunc);
-      }
       const element = elements[elementId];
-      const { tileWidth, tileHeight } = model.element[element.type].dimensions;
+      const { tileWidth, tileHeight, height } = model.element[element.type].dimensions;
+      if (!objects.elements[elementId]) {
+        objects.elements[elementId] = new Cuboid() 
+        .mount(objectLayer)
+        .translateBy(0, 0, element.options.depth)
+        .addComponent(PlacementMouseComponent)
+        .placementMouse.enabled(true);
+      }
       objects.elements[elementId]
         .id(elementId)
-        .depth(1)
-        .mount(objectLayer)
+        .depth(element.options.depth*-1)
+       
         //.texture(textures.tile)
-        .translateToTile(tileX, tileY)
-        .bounds3d(tileWidth * 20, tileHeight * 20, 40);
-        tileX += 4;
-        tileY += 4;
+        .bounds3d(tileWidth * 20, tileHeight * 20, height);
     });
 
 }

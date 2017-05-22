@@ -1,6 +1,7 @@
 import { createObjects } from './createObjects';
+import { MouseMoveCameraComponent } from './components/MouseMoveCameraComponent';
 
-const { IgeTexture, IgeClass, IgeEngine, IgeScene2d, IgeTileMap2d, IgeViewport, IgeEntityManager, IgeMousePanComponent, IgeTiledComponent } = window;
+const { IgeTexture, IgeClass, IgeEngine, IgeScene2d, IgeTileMap2d, IgeViewport, IgeEntityManager, IgeTiledComponent } = window;
 //window.igeRoot = '../../engine';
 export default function createLayout() {
   var state = {
@@ -81,10 +82,11 @@ export default function createLayout() {
 						.depth(1)
 					  .isometricMounts(true)
             .drawGrid(true)
-            .gridSize(50, 50)
+            .gridSize(200, 200)
             .gridColor('#444')
-						.drawBounds(false)
-						.drawBoundsData(false)
+						//.drawBounds(true)
+						//.drawBoundsData(true)
+						//.drawMouse(true)
 						.tileWidth(20)
 						.tileHeight(20)
 						.mount(scene.mainScene);
@@ -93,8 +95,8 @@ export default function createLayout() {
 					scene.vp1 = new IgeViewport()
 						.id('vp1')
 						.depth(1)
-            .addComponent(IgeMousePanComponent)
-            .mousePan.enabled(true)
+            .addComponent(MouseMoveCameraComponent)
+            .mouseMoveCamera.enabled(true)
             .autoSize(true)
 						.scene(scene.mainScene)
 						.drawBounds(true)
